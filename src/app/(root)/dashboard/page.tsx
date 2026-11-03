@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import StatusBadge from "@/components/booking/StatusBadge";
+import AutoRefresh from "@/components/shared/AutoRefresh";
 import { getSessionUser, serverFetch } from "@/lib/serverApi";
 import { formatMoney } from "@/lib/constants";
 import { formatDate, formatTimeRange } from "@/lib/format";
@@ -40,6 +41,7 @@ export default async function DashboardPage() {
 
   return (
     <section className="container mx-auto px-4 py-12">
+      <AutoRefresh />
       <div className="relative overflow-hidden rounded-3xl bg-foreground p-8 text-background">
         <div aria-hidden className="pointer-events-none absolute -top-24 -right-10 size-80 rounded-full bg-primary/40 blur-3xl" />
         <div className="relative flex flex-wrap items-center gap-5">

@@ -6,6 +6,7 @@ import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTi
 import PageHeader from "@/components/shared/PageHeader";
 import SafeImage from "@/components/shared/SafeImage";
 import StatusBadge from "@/components/booking/StatusBadge";
+import AutoRefresh from "@/components/shared/AutoRefresh";
 import { getSessionUser, serverFetch } from "@/lib/serverApi";
 import { formatMoney } from "@/lib/constants";
 import { formatDate, formatTimeRange } from "@/lib/format";
@@ -20,6 +21,7 @@ export default async function MyBookingsPage() {
 
   return (
     <section className="container mx-auto px-4 py-12">
+      <AutoRefresh />
       <PageHeader
         eyebrow="Creator"
         title="My Bookings"
