@@ -1,3 +1,17 @@
+import Banner from "@/components/home/Banner";
+import FeaturedStudios from "@/components/home/FeaturedStudios";
+import Categories from "@/components/home/Categories";
+import HowItWorks from "@/components/home/HowItWorks";
+import HostGuarantee from "@/components/home/HostGuarantee";
+
 export default function Home() {
-  return <main className="p-10 font-heading text-4xl">StudioSpace</main>;
+  return (
+    <>
+      <Banner />
+      <FeaturedStudios />
+      <Categories />
+      <HowItWorks />
+      <HostGuarantee />
+    </>
+  );
 }
