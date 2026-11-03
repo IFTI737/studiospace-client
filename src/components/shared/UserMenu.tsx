@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { CalendarCheck, Heart, LayoutDashboard, LogOut, PlusCircle, Building2 } from "lucide-react";
+import { CalendarCheck, Heart, LayoutDashboard, LogOut, PlusCircle, Building2, UserRound } from "lucide-react";
 import { toast } from "sonner";
 import { signOut, useSession } from "@/lib/auth-client";
 import { buttonVariants } from "@/components/ui/button";
@@ -20,6 +20,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { getInitials } from "@/lib/utils";
 
 const menuItems = [
+  { label: "My Profile", href: "/profile", icon: UserRound },
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "Add New Studio", href: "/add-studio", icon: PlusCircle },
   { label: "My Studio Listings", href: "/my-listings", icon: Building2 },

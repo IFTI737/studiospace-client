@@ -27,6 +27,7 @@ export const config = {
     "/my-listings",
     "/my-bookings",
     "/saved",
+    "/profile",
     "/studios/edit/:path*",
   ],
 };
