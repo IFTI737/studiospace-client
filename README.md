@@ -17,6 +17,7 @@ StudioSpace is a peer-to-peer marketplace where photographers, filmmakers, podca
 - **Full host CRUD:** add a studio with imgbb image upload, gallery and amenity tags; update with a pre-filled form; delete with a confirmation modal.
 - **Secure auth** with Better Auth (email/password + Google), sessions in HTTPOnly cookies, and JWT-protected API routes that reply `401 Unauthorized` without a valid token.
 - **Private routes** (dashboard, add studio, listings, bookings, saved) that survive page reloads without kicking a logged-in user to login.
+- **My Profile page** to update your name and profile photo (imgbb upload), and change your password (Google users can add one).
 - **Reviews and ratings** with the average recalculated in MongoDB.
 - **Saved studios wishlist** (heart icon) and **PDF invoice** download for confirmed bookings.
 - **Light / dark theme toggle**, Swiper hero slider, branded loaders, skeletons, empty states, toasts and a custom 404 page. Responsive on mobile, tablet and desktop.
