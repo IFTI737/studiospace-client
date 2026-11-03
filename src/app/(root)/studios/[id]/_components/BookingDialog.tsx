@@ -124,7 +124,7 @@ export default function BookingDialog({ studio }: { studio: TStudio }) {
               </div>
 
               <Field>
-                <FieldLabel htmlFor="guests">Number of people</FieldLabel>
+                <FieldLabel htmlFor="guests">Number of people (max {studio.maxCapacity})</FieldLabel>
                 <Input id="guests" name="guests" type="number" min={1} max={studio.maxCapacity} defaultValue={1} required />
               </Field>
 
