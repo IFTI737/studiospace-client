@@ -2,8 +2,9 @@
 
 StudioSpace is a peer-to-peer marketplace where photographers, filmmakers, podcasters and musicians discover and book creative studios by the hour, and hosts list and manage their spaces.
 
-**Live site:** https://YOUR-LIVE-SITE.vercel.app
+**Live site:** https://studiospace-client-nu.vercel.app
 **Server repo:** https://github.com/IFTI737/studiospace-server
+**Live API:** https://studiospace-server-iota.vercel.app
 
 ## Examiner test credentials
 - **Email:** examiner@studiospace.app
