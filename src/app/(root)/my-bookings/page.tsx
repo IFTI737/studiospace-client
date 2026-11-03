@@ -52,9 +52,9 @@ export default async function MyBookingsPage() {
               <div className="relative aspect-[16/10] shrink-0 bg-muted sm:aspect-auto sm:w-44">
                 <SafeImage src={b.studioImage} alt={b.studioTitle} />
               </div>
-              <div className="flex flex-1 flex-col gap-3 p-5">
+              <div className="flex min-w-0 flex-1 flex-col gap-3 p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <Link href={`/studios/${b.studioId}`} className="text-lg font-semibold hover:text-primary">
+                  <Link href={`/studios/${b.studioId}`} className="min-w-0 text-lg font-semibold [overflow-wrap:anywhere] hover:text-primary">
                     {b.studioTitle}
                   </Link>
                   <StatusBadge status={b.status} />

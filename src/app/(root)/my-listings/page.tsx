@@ -49,8 +49,8 @@ export default async function MyListingsPage() {
               <div className="relative aspect-[16/10] shrink-0 bg-muted sm:aspect-auto sm:w-64">
                 <SafeImage src={studio.image} alt={studio.title} />
               </div>
-              <div className="flex flex-1 flex-col gap-4 p-5 md:flex-row md:items-center">
-                <div className="flex-1">
+              <div className="flex min-w-0 flex-1 flex-col gap-4 p-5 md:flex-row md:items-center">
+                <div className="min-w-0 flex-1">
                   <Badge variant="secondary">{studio.category}</Badge>
                   <h2 className="mt-2 text-xl font-semibold">{studio.title}</h2>
                   <div className="mt-2 flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">

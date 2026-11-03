@@ -89,6 +89,11 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+    overflow-x: clip;
+  }
+  /* grids default to one shrinkable column so wide children (sliders, long text) never push the page sideways on phones */
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
   }
   h1, h2, h3, h4 {
     @apply font-heading;
