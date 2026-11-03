@@ -49,18 +49,21 @@ export default function StudioForm({ mode, studio }: Props) {
     };
 
     setSubmitting(true);
+    const toastId = toast.loading(mode === "add" ? "Publishing your studio..." : "Saving your changes...", {
+      description: "Please wait. This can take a few seconds on a slow connection.",
+    });
     try {
       if (mode === "add") {
         await apiFetch("/studios", { method: "POST", body });
-        toast.success("Your studio is live on StudioSpace!");
+        toast.success("Your studio is live on StudioSpace!", { id: toastId, description: undefined });
       } else {
         await apiFetch(`/studios/${studio!._id}`, { method: "PATCH", body });
-        toast.success("Studio updated successfully");
+        toast.success("Studio updated successfully", { id: toastId, description: undefined });
       }
       router.push("/my-listings");
       router.refresh();
     } catch (err) {
-      toast.error((err as Error).message);
+      toast.error((err as Error).message, { id: toastId, description: undefined });
       setSubmitting(false);
     }
   };
