@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Discover and book photo studios, sound stages, podcast lounges, music suites and art workshops near you.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${bricolage.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
