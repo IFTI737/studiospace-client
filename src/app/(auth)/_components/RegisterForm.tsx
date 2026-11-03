@@ -27,14 +27,18 @@ export default function RegisterForm() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const failedRule = passwordRules.find((rule) => !rule.test(password));
+  const liveFailedRule = passwordRules.find((rule) => !rule.test(password));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTouched(true);
     const formData = new FormData(e.currentTarget);
+    // read the real value too: browser autofill doesn't always fire onChange
+    const password = (formData.get("password") as string) || "";
+    const failedRule = passwordRules.find((rule) => !rule.test(password));
 
     if (failedRule) {
+      setPassword(password);
       setError(`Password needs: ${failedRule.label.toLowerCase()}`);
       toast.error("Please fix your password first");
       return;
@@ -85,18 +89,18 @@ export default function RegisterForm() {
 
           <Field>
             <FieldLabel htmlFor="photo">Photo URL</FieldLabel>
-            <Input id="photo" name="photo" type="url" placeholder="https://i.ibb.co/your-photo.jpg" required />
+            <Input id="photo" name="photo" type="url" placeholder="https://i.ibb.co/your-photo.jpg"
+              defaultValue="" required />
           </Field>
 
-          <Field data-invalid={touched && !!failedRule}>
+          <Field data-invalid={touched && !!liveFailedRule}>
             <FieldLabel htmlFor="password">Password</FieldLabel>
             <PasswordInput
               id="password"
               name="password"
               autoComplete="new-password"
               placeholder="••••••••"
-              value={password}
-              aria-invalid={touched && !!failedRule}
+              aria-invalid={touched && !!liveFailedRule}
               onChange={(e) => {
                 setPassword(e.target.value);
                 setTouched(true);
