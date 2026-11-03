@@ -42,13 +42,13 @@ export default async function StudioDetailsPage({ params }: { params: Promise<{ 
         <ArrowLeft /> All Studios
       </Link>
 
-      <div className="grid items-start gap-10 lg:grid-cols-3">
-        <div className="space-y-10 lg:col-span-2">
+      <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-3">
+        <div className="min-w-0 space-y-10 lg:col-span-2">
           <Gallery images={images} title={studio.title} />
 
           <div>
             <Badge>{studio.category}</Badge>
-            <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{studio.title}</h1>
+            <h1 className="mt-3 text-3xl font-bold tracking-tight [overflow-wrap:anywhere] sm:text-4xl">{studio.title}</h1>
             <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-muted-foreground">
               <p className="flex items-center gap-1.5">
                 <MapPin className="size-4" /> {studio.location}
@@ -66,7 +66,7 @@ export default async function StudioDetailsPage({ params }: { params: Promise<{ 
 
           <div className="border-t pt-8">
             <h2 className="text-2xl font-bold">Overview</h2>
-            <p className="mt-3 leading-relaxed whitespace-pre-line text-muted-foreground">{studio.overview}</p>
+            <p className="mt-3 leading-relaxed [overflow-wrap:anywhere] whitespace-pre-line text-muted-foreground">{studio.overview}</p>
           </div>
 
           <div className="border-t pt-8">
@@ -85,14 +85,14 @@ export default async function StudioDetailsPage({ params }: { params: Promise<{ 
 
           <div className="border-t pt-8">
             <h2 className="text-2xl font-bold">Your Host</h2>
-            <div className="mt-4 flex items-center gap-4 rounded-2xl border bg-card p-5">
+            <div className="mt-4 flex min-w-0 items-center gap-4 rounded-2xl border bg-card p-5">
               <Avatar size="lg">
                 {studio.ownerImage && <AvatarImage src={studio.ownerImage} alt={studio.ownerName} />}
                 <AvatarFallback>{getInitials(studio.ownerName)}</AvatarFallback>
               </Avatar>
-              <div>
+              <div className="min-w-0">
                 <p className="font-semibold">{studio.ownerName}</p>
-                <p className="text-sm text-muted-foreground">{studio.ownerEmail}</p>
+                <p className="truncate text-sm text-muted-foreground">{studio.ownerEmail}</p>
                 <p className="mt-1 flex items-center gap-1 text-xs text-emerald-600 dark:text-emerald-400">
                   <ShieldCheck className="size-3.5" /> Verified host
                 </p>
@@ -105,7 +105,7 @@ export default async function StudioDetailsPage({ params }: { params: Promise<{ 
           </div>
         </div>
 
-        <aside className="lg:sticky lg:top-24">
+        <aside className="min-w-0 lg:sticky lg:top-24">
           <div className="rounded-3xl border bg-card p-6 shadow-xl shadow-primary/5">
             <p>
               <span className="font-heading text-4xl font-bold text-primary">{formatMoney(studio.hourlyRate)}</span>

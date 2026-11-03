@@ -9,14 +9,14 @@ import "swiper/css/pagination";
 
 export default function Gallery({ images, title }: { images: string[]; title: string }) {
   return (
-    <div className="overflow-hidden rounded-3xl border bg-muted shadow-sm [--swiper-navigation-color:white] [--swiper-navigation-size:22px]">
+    <div className="w-full min-w-0 overflow-hidden rounded-3xl border bg-muted shadow-sm [--swiper-navigation-color:white] [--swiper-navigation-size:22px]">
       <Swiper
         modules={[Navigation, Pagination, Keyboard]}
         navigation={images.length > 1}
         pagination={{ clickable: true }}
         keyboard
         loop={images.length > 1}
-        className="aspect-[16/10] w-full"
+        className="aspect-[4/3] w-full sm:aspect-[16/10]"
       >
         {images.map((src, i) => (
           <SwiperSlide key={`${src}-${i}`}>
