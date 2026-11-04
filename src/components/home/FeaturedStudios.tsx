@@ -2,7 +2,8 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
-import StudioCard, { StudioCardSkeleton } from "@/components/shared/StudioCard";
+import StudioCard from "@/components/shared/StudioCard";
+import { StudioGridSkeleton } from "@/components/shared/Skeletons";
 import { TStudio } from "@/types/studio.types";
 import SectionHeading from "./SectionHeading";
 
@@ -58,13 +59,7 @@ export default function FeaturedStudios() {
           </Link>
         </div>
         <Suspense
-          fallback={
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <StudioCardSkeleton key={i} />
-              ))}
-            </div>
-          }
+          fallback={<StudioGridSkeleton />}
         >
           <FeaturedList />
         </Suspense>

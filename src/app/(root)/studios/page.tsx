@@ -4,7 +4,8 @@ import Link from "next/link";
 import { SearchX } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from "@/components/ui/empty";
-import StudioCard, { StudioCardSkeleton } from "@/components/shared/StudioCard";
+import StudioCard from "@/components/shared/StudioCard";
+import { StudioGridSkeleton } from "@/components/shared/Skeletons";
 import { TStudio } from "@/types/studio.types";
 import FilterBar from "./_components/FilterBar";
 
@@ -91,10 +92,8 @@ export default async function ExploreStudiosPage({ searchParams }: { searchParam
       <Suspense
         key={JSON.stringify(params)}
         fallback={
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <StudioCardSkeleton key={i} />
-            ))}
+          <div className="mt-12">
+            <StudioGridSkeleton />
           </div>
         }
       >

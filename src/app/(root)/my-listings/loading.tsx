@@ -1,0 +1,5 @@
+import { ListingRowsSkeleton } from "@/components/shared/Skeletons";
+
+export default function Loading() {
+  return <ListingRowsSkeleton />;
+}

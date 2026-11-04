@@ -1,5 +1,5 @@
-import BrandLoader from "@/components/shared/BrandLoader";
+import { HomeSkeleton } from "@/components/shared/Skeletons";
 
 export default function Loading() {
-  return <BrandLoader />;
+  return <HomeSkeleton />;
 }

@@ -1,15 +1,20 @@
-import { StudioCardSkeleton } from "@/components/shared/StudioCard";
+import { Skeleton } from "@/components/ui/skeleton";
+import { StudioGridSkeleton } from "@/components/shared/Skeletons";
 
 export default function StudiosLoading() {
   return (
     <section className="container mx-auto px-4 py-12">
-      <div className="h-12 w-72 animate-pulse rounded-lg bg-muted" />
-      <div className="mt-4 h-4 w-96 max-w-full animate-pulse rounded bg-muted" />
-      <div className="mt-8 h-11 animate-pulse rounded-full bg-muted" />
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <Skeleton className="h-3 w-32" />
+      <Skeleton className="mt-4 h-16 w-80 max-w-full" />
+      <Skeleton className="mt-4 h-4 w-96 max-w-full" />
+      <div className="mt-8 flex flex-wrap gap-2">
         {Array.from({ length: 6 }).map((_, i) => (
-          <StudioCardSkeleton key={i} />
+          <Skeleton key={i} className="h-9 w-28 rounded-full" />
         ))}
+      </div>
+      <Skeleton className="mt-4 h-12 rounded-full" />
+      <div className="mt-10">
+        <StudioGridSkeleton />
       </div>
     </section>
   );
