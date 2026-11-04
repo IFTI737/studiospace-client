@@ -116,8 +116,9 @@
 }
 
 /* Swiper pagination in brand color */
-.swiper-pagination-bullet { background: white; opacity: 0.6; }
-.swiper-pagination-bullet-active { background: var(--primary); opacity: 1; width: 28px; border-radius: 999px; transition: width .3s; }
+.swiper { --swiper-theme-color: var(--primary); }
+.swiper .swiper-pagination-bullet { background: white; opacity: 0.6; transition: width 0.3s, background-color 0.3s; }
+.swiper .swiper-pagination-bullet-active { background: var(--primary); opacity: 1; width: 28px; border-radius: 999px; }
 
 /* ---------- motion & effects (transform/opacity only, so they stay smooth) ---------- */
 
@@ -247,11 +248,11 @@ html.cursor-out :is(.cursor-dot, .cursor-ring) { opacity: 0; }
 
 /* outlined display text */
 .text-outline {
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1.5px currentColor;
 }
 .text-outline-white {
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1.5px rgb(255 255 255 / 0.9);
 }
 
