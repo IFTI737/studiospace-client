@@ -33,8 +33,8 @@ export default async function SavedStudiosPage() {
         </Empty>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {studios.map((studio) => (
-            <StudioCard key={studio._id} studio={studio} saved />
+          {studios.map((studio, i) => (
+            <StudioCard key={studio._id} studio={studio} index={i} saved />
           ))}
         </div>
       )}

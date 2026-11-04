@@ -33,8 +33,8 @@ async function FeaturedList() {
 
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {studios.map((studio) => (
-        <StudioCard key={studio._id} studio={studio} />
+      {studios.map((studio, i) => (
+        <StudioCard key={studio._id} studio={studio} index={i} />
       ))}
     </div>
   );
@@ -42,12 +42,13 @@ async function FeaturedList() {
 
 export default function FeaturedStudios() {
   return (
-    <section className="py-20">
+    <section className="py-24">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             align="left"
             className="mb-10"
+            index="01"
             eyebrow="Featured Studios"
             title="Top-rated spaces creators love"
             description="Hand-picked studios with great reviews, clear pricing and hosts who reply fast."

@@ -55,7 +55,7 @@ export default function SaveButton({
       aria-label={saved ? "Remove from saved studios" : "Save studio"}
       aria-pressed={saved}
       className={cn(
-        "flex size-9 items-center justify-center rounded-full bg-background/85 shadow-sm backdrop-blur transition hover:scale-110 active:scale-95",
+        "flex size-9 items-center justify-center rounded-full bg-background/95 shadow-sm transition hover:scale-110 active:scale-95",
         className,
       )}
     >
