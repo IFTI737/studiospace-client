@@ -56,8 +56,8 @@ async function StudioResults({ params }: { params: SearchParams }) {
         {params.category ? ` in ${params.category}` : ""}
       </p>
       <div className="mt-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {studios.map((studio) => (
-          <StudioCard key={studio._id} studio={studio} />
+        {studios.map((studio, i) => (
+          <StudioCard key={studio._id} studio={studio} index={i} />
         ))}
       </div>
     </>
@@ -68,10 +68,18 @@ export default async function ExploreStudiosPage({ searchParams }: { searchParam
   const params = await searchParams;
 
   return (
-    <section className="container mx-auto px-4 py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Explore Studios</h1>
-        <p className="mt-3 max-w-xl text-muted-foreground">
+    <section className="relative">
+      <div aria-hidden className="bg-grid pointer-events-none absolute inset-x-0 top-0 h-80" />
+      <div className="container relative mx-auto px-4 py-12">
+      <div data-reveal className="mb-8">
+        <p className="flex items-center gap-3 font-mono text-xs font-medium tracking-[0.2em] text-primary uppercase">
+          <span className="h-px w-8 bg-primary/60" />
+          Book by the hour
+        </p>
+        <h1 className="mt-3 text-5xl font-bold tracking-tight sm:text-7xl">
+          Explore <span className="text-outline text-foreground/80">Studios</span>
+        </h1>
+        <p className="mt-4 max-w-xl text-muted-foreground">
           Find a creative workspace by the hour. Filter by category, search by area and sort by price or rating.
         </p>
       </div>
@@ -92,6 +100,7 @@ export default async function ExploreStudiosPage({ searchParams }: { searchParam
       >
         <StudioResults params={params} />
       </Suspense>
+      </div>
     </section>
   );
 }

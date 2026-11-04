@@ -88,11 +88,11 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-2">
-          <h3 className="mb-4 font-semibold">Quick Links</h3>
+          <h3 className="mb-4 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">Quick Links</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             {quickLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="transition-colors hover:text-primary">
+                <Link href={link.href} className="inline-block transition-[color,translate] hover:translate-x-1 hover:text-primary">
                   {link.label}
                 </Link>
               </li>
@@ -101,11 +101,11 @@ export default function Footer() {
         </div>
 
         <div className="lg:col-span-2">
-          <h3 className="mb-4 font-semibold">Popular Categories</h3>
+          <h3 className="mb-4 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">Popular Categories</h3>
           <ul className="space-y-2 text-sm text-muted-foreground">
             {categories.map((c) => (
               <li key={c.name}>
-                <Link href={`/studios?category=${encodeURIComponent(c.name)}`} className="transition-colors hover:text-primary">
+                <Link href={`/studios?category=${encodeURIComponent(c.name)}`} className="inline-block transition-[color,translate] hover:translate-x-1 hover:text-primary">
                   {c.label}
                 </Link>
               </li>
@@ -114,7 +114,7 @@ export default function Footer() {
         </div>
 
         <div className="sm:col-span-2 lg:col-span-4">
-          <h3 className="mb-2 font-semibold">Newsletter</h3>
+          <h3 className="mb-2 font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">Newsletter</h3>
           <p className="mb-4 text-sm text-muted-foreground">
             Get new studios and host tips in your inbox, twice a month.
           </p>
@@ -135,6 +135,12 @@ export default function Footer() {
             </button>
           </form>
         </div>
+      </div>
+
+      <div aria-hidden className="container mx-auto overflow-hidden px-4">
+        <p className="text-outline translate-y-[18%] text-center font-heading text-[17vw] leading-none font-extrabold tracking-tighter text-foreground/15 select-none xl:text-[13rem]">
+          StudioSpace
+        </p>
       </div>
 
       <div className="border-t">

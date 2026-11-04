@@ -64,16 +64,16 @@ export default async function StudioDetailsPage({ params }: { params: Promise<{ 
             </div>
           </div>
 
-          <div className="border-t pt-8">
-            <h2 className="text-2xl font-bold">Overview</h2>
+          <div data-reveal className="border-t pt-8">
+            <h2 className="text-2xl font-bold tracking-tight">Overview</h2>
             <p className="mt-3 leading-relaxed [overflow-wrap:anywhere] whitespace-pre-line text-muted-foreground">{studio.overview}</p>
           </div>
 
-          <div className="border-t pt-8">
-            <h2 className="text-2xl font-bold">Amenities</h2>
+          <div data-reveal className="border-t pt-8">
+            <h2 className="text-2xl font-bold tracking-tight">Amenities</h2>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {studio.amenities?.map((item) => (
-                <li key={item} className="flex items-center gap-2 rounded-xl border bg-card px-4 py-3 text-sm">
+                <li key={item} className="flex items-center gap-2 rounded-xl border bg-card px-4 py-3 text-sm transition-colors hover:border-primary/50">
                   <span className="flex size-6 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <Check className="size-3.5" />
                   </span>
@@ -83,8 +83,8 @@ export default async function StudioDetailsPage({ params }: { params: Promise<{ 
             </ul>
           </div>
 
-          <div className="border-t pt-8">
-            <h2 className="text-2xl font-bold">Your Host</h2>
+          <div data-reveal className="border-t pt-8">
+            <h2 className="text-2xl font-bold tracking-tight">Your Host</h2>
             <div className="mt-4 flex min-w-0 items-center gap-4 rounded-2xl border bg-card p-5">
               <Avatar size="lg">
                 {studio.ownerImage && <AvatarImage src={studio.ownerImage} alt={studio.ownerName} />}
@@ -100,16 +100,17 @@ export default async function StudioDetailsPage({ params }: { params: Promise<{ 
             </div>
           </div>
 
-          <div className="border-t pt-8">
+          <div data-reveal className="border-t pt-8">
             <Reviews studioId={studio._id} reviews={studio.reviews ?? []} ownerEmail={studio.ownerEmail} />
           </div>
         </div>
 
         <aside className="min-w-0 lg:sticky lg:top-24">
-          <div className="rounded-3xl border bg-card p-6 shadow-xl shadow-primary/5">
+          <div data-reveal className="relative overflow-hidden rounded-3xl border bg-card p-6 shadow-[0_30px_70px_-35px] shadow-primary/50 ring-1 ring-primary/20">
+            <div aria-hidden className="pointer-events-none absolute -top-20 -right-20 size-48 rounded-full bg-primary/15 blur-3xl" />
             <p>
-              <span className="font-heading text-4xl font-bold text-primary">{formatMoney(studio.hourlyRate)}</span>
-              <span className="text-muted-foreground"> / hour</span>
+              <span className="relative font-heading text-5xl font-bold text-primary">{formatMoney(studio.hourlyRate)}</span>
+              <span className="font-mono text-xs tracking-wider text-muted-foreground uppercase"> / hour</span>
             </p>
             <ul className="mt-5 space-y-3 text-sm">
               <li className="flex items-center justify-between">
