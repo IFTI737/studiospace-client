@@ -52,15 +52,29 @@ export default function CustomCursor() {
       }
     };
 
-    const onOver = (e: PointerEvent) => {
-      const target = e.target as Element | null;
+    // state lives on <html data-cursor-state>, NOT data-cursor, so the page itself
+    // never matches the [data-cursor] lookup below
+    const setStateFrom = (target: Element | null) => {
       if (!target?.closest) return;
       const field = target.closest("input, textarea, select, [contenteditable='true']");
       const view = target.closest<HTMLElement>("[data-cursor]");
       const link = target.closest("a, button, [role='button'], [role='menuitem'], [role='option'], [role='tab'], label, summary");
       const state = field ? "field" : view ? "view" : link ? "hover" : "";
-      root.dataset.cursor = state;
-      label.textContent = view && !field ? view.dataset.cursor || "" : "";
+      if (root.dataset.cursorState !== state) root.dataset.cursorState = state;
+      const text = state === "view" ? view?.dataset.cursor || "" : "";
+      if (label.textContent !== text) label.textContent = text;
+    };
+
+    const onOver = (e: PointerEvent) => setStateFrom(e.target as Element | null);
+
+    // content slides under a still mouse while scrolling, so re-check what is under it
+    let scrollFrame = 0;
+    const onScroll = () => {
+      if (scrollFrame) return;
+      scrollFrame = requestAnimationFrame(() => {
+        scrollFrame = 0;
+        if (mx >= 0) setStateFrom(document.elementFromPoint(mx, my));
+      });
     };
 
     const onDown = () => root.classList.add("cursor-down");
@@ -73,8 +87,11 @@ export default function CustomCursor() {
     document.addEventListener("pointerup", onUp, { passive: true });
     document.documentElement.addEventListener("mouseleave", onLeave);
     window.addEventListener("blur", onLeave);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
+      cancelAnimationFrame(scrollFrame);
+      window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(frame);
       document.removeEventListener("pointermove", onMove);
       document.removeEventListener("pointerover", onOver);
@@ -83,7 +100,7 @@ export default function CustomCursor() {
       document.documentElement.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("blur", onLeave);
       root.classList.remove("has-cursor", "cursor-out", "cursor-down");
-      delete root.dataset.cursor;
+      delete root.dataset.cursorState;
     };
   }, [enabled]);
 

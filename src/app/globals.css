@@ -216,22 +216,23 @@ html.has-cursor :is(input[type="date"], input[type="file"], select) { cursor: de
   font-weight: 600;
   letter-spacing: 0.14em;
   white-space: nowrap;
+  text-transform: uppercase;
   color: var(--primary-foreground);
   opacity: 0;
   transition: opacity 0.2s;
 }
-html[data-cursor="hover"] .cursor-ring .ring {
+html[data-cursor-state="hover"] .cursor-ring .ring {
   transform: scale(1.6);
   background-color: color-mix(in oklch, var(--primary) 14%, transparent);
 }
-html[data-cursor="view"] .cursor-ring .ring {
+html[data-cursor-state="view"] .cursor-ring .ring {
   transform: scale(2.4);
   background-color: var(--primary);
   box-shadow: none;
 }
-html[data-cursor="view"] .cursor-ring span { opacity: 1; }
-html[data-cursor="view"] .cursor-dot { opacity: 0; }
-html[data-cursor="field"] :is(.cursor-dot, .cursor-ring .ring) { opacity: 0; }
+html[data-cursor-state="view"] .cursor-ring span { opacity: 1; }
+html[data-cursor-state="view"] .cursor-dot { opacity: 0; }
+html[data-cursor-state="field"] :is(.cursor-dot, .cursor-ring .ring) { opacity: 0; }
 html.cursor-down .cursor-ring .ring { transform: scale(0.8); }
 html.cursor-out :is(.cursor-dot, .cursor-ring) { opacity: 0; }
 
